@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Điền tên] | Website dịch vụ & profile cá nhân</title>
+  <meta name="description" content="Website profile cá nhân và bảng giá dịch vụ chuyên nghiệp, hiện đại, responsive." />
+  <meta name="keywords" content="profile cá nhân, website dịch vụ, bảng giá, landing page, freelancer" />
+  <meta name="author" content="[Điền tên]" />
+  <meta property="og:title" content="[Điền tên] | Website dịch vụ & profile cá nhân" />
+  <meta property="og:description" content="[Điền slogan] - Giới thiệu bản thân, trưng bày dịch vụ, bảng giá và liên hệ nhanh." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+/* ==================================================
+   WEBSITE PROFILE / BẢNG GIÁ DỊCH VỤ
+   Tác dụng:
+   - Responsive full mobile/tablet/desktop
+   - Header cố định
+   - Hiệu ứng hover, reveal, smooth scroll
+   - Dễ chỉnh sửa và mở rộng
+================================================== */
+
+:root {
+  --bg: #0b1220;
+  --bg-soft: #121a2d;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-strong: rgba(255, 255, 255, 0.1);
+  --text: #eef2ff;
+  --muted: #b9c1d9;
+  --primary: #5b8cff;
+  --primary-2: #7c4dff;
+  --line: rgba(255, 255, 255, 0.12);
+  --success: #2dd4bf;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+  --radius: 22px;
+  --container: 1180px;
+  --header-height: 82px;
+  --transition: all 0.3s ease;
+  --font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background:
+    radial-gradient(circle at top left, rgba(91, 140, 255, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(124, 77, 255, 0.14), transparent 25%),
+    linear-gradient(180deg, #09111d 0%, #0b1220 100%);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.section-alt {
+  background: rgba(255, 255, 255, 0.025);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-header {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.section-header h2 {
+  margin: 12px 0 14px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.section-tag,
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(91, 140, 255, 0.25);
+  background: rgba(91, 140, 255, 0.1);
+  border-radius: 999px;
+  color: #dce7ff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  min-height: 42px;
+  padding: 0 18px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: white;
+  box-shadow: 0 12px 28px rgba(91, 140, 255, 0.3);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.btn-outline {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-outline:hover,
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-ghost {
+  border-color: transparent;
+  background: transparent;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(16px);
+  background: rgba(8, 13, 24, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-wrapper {
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  font-weight: 800;
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.brand-text {
+  display: grid;
+}
+
+.brand-text strong {
+  font-size: 1rem;
+}
+
+.brand-text span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-nav a {
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--muted);
+  transition: var(--transition);
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+}
+
+.menu-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  margin: 5px auto;
+  border-radius: 999px;
+}
+
+.hero-section {
+  padding: 70px 0 90px;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 38px;
+  align-items: center;
+}
+
+.hero-content h1 {
+  margin: 18px 0 8px;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1;
+}
+
+.hero-content h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  color: #d7dfff;
+  font-weight: 600;
+}
+
+.hero-desc {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 32px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.stat-card,
+.feature-card,
+.service-card,
+.testimonial-card,
+.contact-card,
+.info-card,
+.achievement-card,
+.pricing-card,
+.profile-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.stat-card {
+  padding: 18px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.profile-card {
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -40px -40px auto;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(124,77,255,0.35), transparent 65%);
+}
+
+.profile-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(10, 16, 28, 0.7);
+  border: 1px solid var(--line);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.profile-card img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.profile-card-content {
+  padding: 18px 6px 8px;
+}
+
+.profile-card-content h3 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.profile-card-content p,
+.mini-contact span {
+  color: var(--muted);
+}
+
+.mini-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.feature-grid,
+.service-grid,
+.testimonial-grid,
+.pricing-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-card {
+  padding: 28px;
+  transition: var(--transition);
+}
+
+.feature-card:hover,
+.service-card:hover,
+.testimonial-card:hover,
+.pricing-card:hover,
+.achievement-card:hover,
+.info-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(91, 140, 255, 0.35);
+}
+
+.feature-card i,
+.service-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(91,140,255,0.22), rgba(124,77,255,0.18));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.4rem;
+}
+
+.profile-grid,
+.contact-grid,
+.faq-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.profile-image img {
+  border-radius: 28px;
+  min-height: 620px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.profile-role {
+  margin: 0 0 8px;
+  color: #d4dcff;
+  font-weight: 700;
+}
+
+.profile-short {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.info-block h3,
+.contact-card h3 {
+  margin-top: 0;
+}
+
+.info-grid,
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.info-card,
+.achievement-card {
+  padding: 22px;
+}
+
+.info-card ul,
+.pricing-card ul,
+.contact-card ul,
+.footer-grid ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.achievement-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 18px;
+}
+
+.achievement-card strong {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.achievement-card span,
+.social-links a,
+.contact-card li,
+.footer-grid li {
+  color: var(--muted);
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--line);
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.09);
+}
+
+.service-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.service-card {
+  padding: 28px;
+}
+
+.service-card h3 {
+  margin: 0 0 10px;
+}
+
+.service-card p {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+.service-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.service-meta strong {
+  font-size: 1.15rem;
+}
+
+.service-meta a {
+  color: #dbe4ff;
+  font-weight: 700;
+}
+
+.pricing-grid {
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+}
+
+.pricing-card {
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card h3 {
+  margin: 14px 0 10px;
+  font-size: 1.75rem;
+}
+
+.pricing-label,
+.pricing-badge {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.pricing-label {
+  background: rgba(255,255,255,0.06);
+  color: #dfe7ff;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: linear-gradient(135deg, #ffd166, #ff9f1c);
+  color: #341500;
+}
+
+.price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.pricing-card ul {
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.pricing-card.featured {
+  border-color: rgba(255, 209, 102, 0.4);
+  transform: translateY(-8px);
+  background:
+    radial-gradient(circle at top right, rgba(255, 209, 102, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+}
+
+.testimonial-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.testimonial-card {
+  padding: 28px;
+}
+
+.testimonial-card p {
+  margin-top: 0;
+  color: var(--text);
+}
+
+.testimonial-author {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.testimonial-author span {
+  color: var(--muted);
+}
+
+.faq-intro {
+  position: sticky;
+  top: 110px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 20px 22px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-question i {
+  transition: var(--transition);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: var(--muted);
+  padding: 0 22px 22px;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 220px;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(45deg);
+}
+
+.contact-grid {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.contact-info,
+.contact-form-wrap {
+  display: grid;
+  gap: 18px;
+}
+
+.contact-card {
+  padding: 24px;
+}
+
+.contact-card ul li {
+  margin-bottom: 10px;
+}
+
+.map-placeholder {
+  min-height: 210px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255,255,255,0.2);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 10px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.03);
+}
+
+.map-placeholder i {
+  font-size: 2rem;
+}
+
+.contact-form {
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(11, 18, 32, 0.7);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 14px 16px;
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(91, 140, 255, 0.55);
+  box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.14);
+}
+
+.form-note,
+.form-status {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.form-status.success {
+  color: var(--success);
+}
+
+.site-footer {
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
+  background: rgba(6, 10, 18, 0.8);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.9fr;
+  gap: 28px;
+  padding-bottom: 28px;
+}
+
+.footer-grid h3,
+.footer-grid h4 {
+  margin-top: 0;
+}
+
+.footer-grid p {
+  color: var(--muted);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.floating-actions {
+  position: fixed;
+  right: 18px;
+  bottom: 90px;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.floating-actions a,
+.back-to-top {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(12, 18, 31, 0.92);
+  color: white;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.floating-actions a:hover,
+.back-to-top:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+}
+
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 991;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 1100px) {
+  .feature-grid,
+  .service-grid,
+  .pricing-grid,
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-grid,
+  .profile-grid,
+  .contact-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    min-height: auto;
+  }
+
+  .faq-intro {
+    position: static;
+  }
+}
+
+@media (max-width: 820px) {
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(var(--header-height) - 6px);
+    left: 16px;
+    right: 16px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    border-radius: 22px;
+    background: rgba(8, 13, 24, 0.96);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    width: 100%;
+  }
+
+  .hero-stats,
+  .achievement-grid,
+  .info-grid,
+  .form-row,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card img {
+    height: 430px;
+  }
+
+  .section {
+    padding: 78px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: min(var(--container), calc(100% - 20px));
+  }
+
+  .hero-content h1 {
+    font-size: 2.35rem;
+  }
+
+  .feature-grid,
+  .service-grid,
+  .pricing-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image img {
+    min-height: 360px;
+  }
+
+  .contact-form,
+  .feature-card,
+  .service-card,
+  .pricing-card,
+  .testimonial-card,
+  .contact-card,
+  .info-card,
+  .achievement-card {
+    padding: 20px;
+  }
+
+  .floating-actions {
+    right: 12px;
+    bottom: 84px;
+  }
+
+  .back-to-top {
+    right: 12px;
+    bottom: 14px;
+  }
+}
+
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand">
+        <div class="brand-logo">L</div>
+        <div class="brand-text">
+          <strong>[Điền tên]</strong>
+          <span>[Điền slogan]</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <a href="#hero">Trang chủ</a>
+        <a href="#profile">Profile</a>
+        <a href="#services">Dịch vụ</a>
+        <a href="#pricing">Bảng giá</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-sm btn-primary">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <span class="eyebrow">Website cá nhân / thương hiệu chuyên nghiệp</span>
+          <h1>[Điền tên]</h1>
+          <h2>[Điền nghề nghiệp / vai trò]</h2>
+          <p class="hero-desc">
+            [Điền mô tả ngắn] — Website này giúp giới thiệu bản thân, trưng bày dịch vụ,
+            hiển thị bảng giá, tăng khách liên hệ và chốt đơn nhanh qua các nền tảng chat.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Liên hệ ngay</a>
+            <a href="#pricing" class="btn btn-outline">Xem bảng giá</a>
+            <a href="#services" class="btn btn-ghost">Xem dịch vụ</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <strong>100+</strong>
+              <span>Khách hàng hỗ trợ</span>
+            </div>
+            <div class="stat-card">
+              <strong>3+</strong>
+              <span>Năm kinh nghiệm</span>
+            </div>
+            <div class="stat-card">
+              <strong>24/7</strong>
+              <span>Tư vấn nhanh</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="profile-card">
+            <div class="profile-card-badge">
+              <i class="bi bi-patch-check-fill"></i> Thương hiệu cá nhân
+            </div>
+            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=900&q=80" alt="Ảnh đại diện thương hiệu" />
+            <div class="profile-card-content">
+              <h3>[Điền tên]</h3>
+              <p>[Điền lĩnh vực hoạt động]</p>
+              <div class="mini-contact">
+                <span><i class="bi bi-telephone"></i> 09xx xxx xxx</span>
+                <span><i class="bi bi-envelope"></i> email@example.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Thông tin tổng quan</span>
+          <h2>Thiết kế tối ưu để giới thiệu, bán dịch vụ và tăng chuyển đổi</h2>
+          <p>
+            Giao diện hiện đại, responsive toàn diện, dễ thay nội dung và phù hợp cho cá nhân,
+            freelancer, agency hoặc thương hiệu dịch vụ.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <i class="bi bi-person-badge"></i>
+            <h3>Giới thiệu bản thân</h3>
+            <p>Nêu bật profile, kinh nghiệm, kỹ năng, dự án và điểm mạnh của bạn.</p>
+          </article>
+          <article class="feature-card reveal">
+            <i class="bi bi-grid"></i>
+            <h3>Trưng bày dịch vụ</h3>
+            <p>Danh sách dịch vụ đẹp mắt, rõ giá, dễ xem và có nút đặt ngay.</p>
+          </article>
+          <article class="feature-card reveal">
+            <i class="bi bi-cash-coin"></i>
+            <h3>Bảng giá trực quan</h3>
+            <p>Chia gói cơ bản, tiêu chuẩn, cao cấp để khách dễ chọn.</p>
+          </article>
+          <article class="feature-card reveal">
+            <i class="bi bi-chat-dots"></i>
+            <h3>Tăng liên hệ nhanh</h3>
+            <p>Tích hợp Zalo, Messenger, Telegram, WhatsApp và gọi điện nổi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <section class="section section-alt" id="profile">
+      <div class="container profile-grid">
+        <div class="profile-image reveal">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=80" alt="Ảnh profile cá nhân" />
+        </div>
+        <div class="profile-content reveal">
+          <span class="section-tag">Profile cá nhân</span>
+          <h2>[Điền tên đầy đủ]</h2>
+          <p class="profile-role">[Điền chức danh / nghề nghiệp]</p>
+          <p class="profile-short">[Điền mô tả ngắn về bản thân]</p>
+
+          <div class="info-block">
+            <h3>Giới thiệu chi tiết</h3>
+            <p>
+              [Điền nội dung giới thiệu chi tiết]. Ví dụ: Tôi chuyên cung cấp giải pháp thiết kế website,
+              marketing, phát triển thương hiệu và tối ưu chuyển đổi cho cá nhân/doanh nghiệp.
+              Mục tiêu là tạo ra sản phẩm đẹp, hiệu quả và dễ vận hành lâu dài.
+            </p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>Kinh nghiệm</h4>
+              <ul>
+                <li>3+ năm làm việc trong lĩnh vực [điền lĩnh vực]</li>
+                <li>Thực hiện nhiều dự án cá nhân & thương mại</li>
+                <li>Tư duy tối ưu trải nghiệm người dùng và chuyển đổi</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>Kỹ năng nổi bật</h4>
+              <ul>
+                <li>Thiết kế giao diện hiện đại</li>
+                <li>Tư vấn dịch vụ & xây dựng thương hiệu</li>
+                <li>Chăm sóc khách hàng và chốt đơn nhanh</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="achievement-grid">
+            <div class="achievement-card">
+              <strong>50+</strong>
+              <span>Dự án tiêu biểu</span>
+            </div>
+            <div class="achievement-card">
+              <strong>30+</strong>
+              <span>Khách hàng / đối tác</span>
+            </div>
+            <div class="achievement-card">
+              <strong>4.9/5</strong>
+              <span>Mức hài lòng</span>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#"><i class="bi bi-facebook"></i> Facebook</a>
+            <a href="#"><i class="bi bi-tiktok"></i> TikTok</a>
+            <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="#"><i class="bi bi-telegram"></i> Telegram</a>
+            <a href="#"><i class="bi bi-envelope"></i> Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Dịch vụ</span>
+          <h2>Danh sách dịch vụ nổi bật</h2>
+          <p>Mỗi dịch vụ được trình bày rõ ràng, có mô tả ngắn, mức giá và nút liên hệ nhanh.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-icon"><i class="bi bi-laptop"></i></div>
+            <h3>Dịch vụ 1</h3>
+            <p>Thiết kế website/profile chuyên nghiệp, giao diện đẹp, responsive và dễ chỉnh sửa.</p>
+            <div class="service-meta">
+              <strong>2.500.000đ</strong>
+              <a href="#contact">Liên hệ ngay</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon"><i class="bi bi-bar-chart-line"></i></div>
+            <h3>Dịch vụ 2</h3>
+            <p>Tư vấn marketing, xây dựng nội dung, tối ưu thương hiệu và tăng chuyển đổi khách hàng.</p>
+            <div class="service-meta">
+              <strong>3.900.000đ</strong>
+              <a href="#contact">Đặt dịch vụ</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon"><i class="bi bi-megaphone"></i></div>
+            <h3>Dịch vụ 3</h3>
+            <p>Thiết kế landing page/bảng giá/chăm sóc hình ảnh thương hiệu chuyên nghiệp.</p>
+            <div class="service-meta">
+              <strong>1.800.000đ</strong>
+              <a href="#contact">Xem tư vấn</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-alt" id="pricing">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Bảng giá</span>
+          <h2>Chọn gói phù hợp với nhu cầu của bạn</h2>
+          <p>Thiết kế nổi bật gói phổ biến nhất, rõ quyền lợi, rõ giá và tối ưu chuyển đổi.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card reveal">
+            <span class="pricing-label">Cơ bản</span>
+            <h3>Starter</h3>
+            <div class="price">1.500.000đ</div>
+            <ul>
+              <li>1 landing page cơ bản</li>
+              <li>Responsive mobile/tablet/desktop</li>
+              <li>Form liên hệ</li>
+              <li>Tối ưu tốc độ cơ bản</li>
+              <li>Hỗ trợ chỉnh sửa nội dung</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block">Đăng ký ngay</a>
+          </article>
+
+          <article class="pricing-card featured reveal">
+            <span class="pricing-badge">Phổ biến nhất</span>
+            <span class="pricing-label">Tiêu chuẩn</span>
+            <h3>Professional</h3>
+            <div class="price">3.500.000đ</div>
+            <ul>
+              <li>Website đầy đủ profile + dịch vụ + bảng giá</li>
+              <li>Hiệu ứng cuộn mượt & hover đẹp</li>
+              <li>FAQ, feedback, footer chuyên nghiệp</li>
+              <li>CTA chat nhanh đa nền tảng</li>
+              <li>SEO cơ bản & code dễ nâng cấp</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary btn-block">Chọn gói này</a>
+          </article>
+
+          <article class="pricing-card reveal">
+            <span class="pricing-label">Cao cấp</span>
+            <h3>Premium</h3>
+            <div class="price">6.900.000đ</div>
+            <ul>
+              <li>Thiết kế riêng theo thương hiệu</li>
+              <li>Layout cao cấp, animation chỉn chu</li>
+              <li>Tối ưu chuyển đổi nâng cao</li>
+              <li>Tích hợp nhiều khối nội dung mở rộng</li>
+              <li>Hỗ trợ triển khai & chỉnh sửa sâu</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block">Liên hệ tư vấn</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback -->
+    <section class="section" id="feedback">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Khách hàng nói gì</span>
+          <h2>Feedback thực tế tạo độ tin cậy mạnh hơn</h2>
+          <p>Bạn có thể thay các nội dung mẫu bên dưới bằng đánh giá thật từ khách hàng.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal">
+            <p>“Thiết kế rất đẹp, giao diện mượt, khách vào xem là hiểu dịch vụ ngay.”</p>
+            <div class="testimonial-author">
+              <strong>Nguyễn Minh A</strong>
+              <span>Chủ shop online</span>
+            </div>
+          </article>
+          <article class="testimonial-card reveal">
+            <p>“Website giúp mình chuyên nghiệp hơn rõ rệt, tỷ lệ inbox tăng sau khi dùng.”</p>
+            <div class="testimonial-author">
+              <strong>Trần Thu B</strong>
+              <span>Freelancer</span>
+            </div>
+          </article>
+          <article class="testimonial-card reveal">
+            <p>“Code gọn, dễ sửa, giao diện nhìn hiện đại và rất phù hợp để chốt khách.”</p>
+            <div class="testimonial-author">
+              <strong>Lê Quốc C</strong>
+              <span>Agency dịch vụ</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-intro reveal">
+          <span class="section-tag">FAQ</span>
+          <h2>Câu hỏi thường gặp</h2>
+          <p>Phần này giúp giảm băn khoăn của khách trước khi liên hệ hoặc đặt dịch vụ.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item active">
+            <button class="faq-question">
+              Website có chỉnh sửa nội dung dễ không?
+              <i class="bi bi-plus-lg"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Có. Nội dung được chia rõ trong HTML nên bạn có thể thay tên, giá, mô tả, link liên hệ rất nhanh.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Website có dùng được trên điện thoại không?
+              <i class="bi bi-plus-lg"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Có. Website được thiết kế responsive, tối ưu mobile, tablet và desktop.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Có thể thêm trang hoặc nâng cấp sau này không?
+              <i class="bi bi-plus-lg"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Có. Cấu trúc code sạch, tách file rõ ràng nên rất dễ mở rộng thêm section hoặc trang mới.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Form liên hệ hiện tại hoạt động như thế nào?
+              <i class="bi bi-plus-lg"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Form mẫu hiện xử lý phía client và hiển thị thông báo thành công. Bạn có thể nối thêm Formspree, EmailJS hoặc backend riêng để nhận dữ liệu thật.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Liên hệ</span>
+          <h2>Sẵn sàng trao đổi và chốt đơn nhanh</h2>
+          <p>Điền form hoặc nhấn các nút chat nhanh để trao đổi trực tiếp.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="contact-card">
+              <h3>Thông tin liên hệ</h3>
+              <ul>
+                <li><i class="bi bi-person"></i> [Điền tên]</li>
+                <li><i class="bi bi-telephone"></i> 09xx xxx xxx</li>
+                <li><i class="bi bi-envelope"></i> email@example.com</li>
+                <li><i class="bi bi-geo-alt"></i> [Điền địa chỉ / khu vực hoạt động]</li>
+              </ul>
+            </div>
+
+            <div class="contact-card">
+              <h3>Kênh mạng xã hội</h3>
+              <div class="social-links">
+                <a href="#"><i class="bi bi-facebook"></i> Facebook</a>
+                <a href="#"><i class="bi bi-chat-dots-fill"></i> Zalo</a>
+                <a href="#"><i class="bi bi-telegram"></i> Telegram</a>
+                <a href="#"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="contact-card map-card">
+              <h3>Bản đồ / vị trí</h3>
+              <div class="map-placeholder">
+                <i class="bi bi-map"></i>
+                <span>Bạn có thể nhúng Google Maps tại đây</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap reveal">
+            <form id="contactForm" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Họ tên</label>
+                  <input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Số điện thoại</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Nội dung</label>
+                <textarea id="message" name="message" rows="6" placeholder="Nhập nội dung cần tư vấn..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Gửi liên hệ</button>
+              <p class="form-note">* Đây là form mẫu có sẵn, dễ kết nối thêm EmailJS / Formspree / backend sau này.</p>
+              <p class="form-status" id="formStatus"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Actions -->
+  <div class="floating-actions">
+    <a href="tel:0900000000" aria-label="Gọi điện" title="Gọi điện"><i class="bi bi-telephone-fill"></i></a>
+    <a href="#" aria-label="Zalo" title="Zalo"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="#" aria-label="Messenger" title="Messenger"><i class="bi bi-messenger"></i></a>
+    <a href="#" aria-label="Telegram" title="Telegram"><i class="bi bi-telegram"></i></a>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Cuộn lên đầu trang">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>[Điền tên]</h3>
+        <p>[Điền slogan]</p>
+        <p>Website profile cá nhân và bảng giá dịch vụ chuyên nghiệp, dễ nâng cấp và tối ưu chuyển đổi.</p>
+      </div>
+      <div>
+        <h4>Liên kết nhanh</h4>
+        <ul>
+          <li><a href="#hero">Trang chủ</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#services">Dịch vụ</a></li>
+          <li><a href="#pricing">Bảng giá</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Thông tin liên hệ</h4>
+        <ul>
+          <li>Điện thoại: 09xx xxx xxx</li>
+          <li>Email: email@example.com</li>
+          <li>Zalo / Telegram / Messenger</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 [Điền tên]. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+// ===============================================
+// SCRIPT WEBSITE PROFILE / DỊCH VỤ
+// - Mobile menu
+// - Active menu theo section
+// - Reveal animation khi cuộn
+// - FAQ accordion
+// - Nút lên đầu trang
+// - Form liên hệ mẫu
+// ===============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const siteNav = document.getElementById("siteNav");
+  const navLinks = document.querySelectorAll(".site-nav a");
+  const sections = document.querySelectorAll("main section[id]");
+  const backToTop = document.getElementById("backToTop");
+  const revealItems = document.querySelectorAll(".reveal");
+  const faqItems = document.querySelectorAll(".faq-item");
+  const contactForm = document.getElementById("contactForm");
+  const formStatus = document.getElementById("formStatus");
+
+  // Mobile menu toggle
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener("click", () => {
+      siteNav.classList.toggle("open");
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("open");
+      });
+    });
+  }
+
+  // Active nav item theo vị trí section
+  const updateActiveNav = () => {
+    const scrollPosition = window.scrollY + 130;
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute("id");
+      const relatedLink = document.querySelector(`.site-nav a[href="#${id}"]`);
+
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        if (relatedLink) relatedLink.classList.add("active");
+      }
+    });
+  };
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealItems.forEach(item => revealObserver.observe(item));
+
+  // FAQ accordion
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    question.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+
+      faqItems.forEach(otherItem => otherItem.classList.remove("active"));
+
+      if (!isActive) {
+        item.classList.add("active");
+      }
+    });
+  });
+
+  // Back to top
+  const toggleBackToTop = () => {
+    if (window.scrollY > 500) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  };
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Form liên hệ mẫu
+  if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !phone || !email || !message) {
+        formStatus.textContent = "Vui lòng điền đầy đủ thông tin.";
+        formStatus.classList.remove("success");
+        return;
+      }
+
+      formStatus.textContent = "Gửi liên hệ thành công! Tôi sẽ phản hồi sớm nhất.";
+      formStatus.classList.add("success");
+
+      contactForm.reset();
+    });
+  }
+
+  // Click ra ngoài menu mobile thì tự đóng
+  document.addEventListener("click", (event) => {
+    if (!siteNav.contains(event.target) && !menuToggle.contains(event.target)) {
+      siteNav.classList.remove("open");
+    }
+  });
+
+  // Gọi khi tải trang & khi cuộn
+  updateActiveNav();
+  toggleBackToTop();
+
+  window.addEventListener("scroll", () => {
+    updateActiveNav();
+    toggleBackToTop();
+  });
+});
+
+</script>
+</body>
+</html>
